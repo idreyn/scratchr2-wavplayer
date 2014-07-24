@@ -22,6 +22,7 @@
 
 package {
 
+import flash.debugger.enterDebugger;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.ProgressEvent;
@@ -31,15 +32,13 @@ import flash.net.URLLoaderDataFormat;
 import flash.net.URLRequest;
 import flash.utils.ByteArray;
 
-import scratch.ScratchSound;
-
+import sound.WAVFile;
 import sound.ScratchSoundPlayer;
 
 [SWF(width='100',height='100',backgroundColor='#ffffff',frameRate='25')]
 public class WavPlayer extends Sprite {
-	public var sound:ScratchSoundPlayer;
 	private var loader:URLLoader;
-
+	private var sound:Object;
 	public function WavPlayer() {
 		if(ExternalInterface.available) {
 			ExternalInterface.addCallback('AS_loadSound', loadSound);
@@ -57,26 +56,30 @@ public class WavPlayer extends Sprite {
 	}
 
 	private function onLoadProgress(e:ProgressEvent):void {
-		ExternalInterface.call('SoundPlayer.onLoadProgress',e.bytesLoaded,e.bytesTotal);
+		externalInterfaceCall('SoundPlayer.onLoadProgress',e.bytesLoaded,e.bytesTotal);
 	}
 
 	private function onLoadComplete(e:Event):void {
-		sound = new ScratchSound('sound',loader.data as ByteArray).sndplayer();
-		ExternalInterface.call('SoundPlayer.onLoadComplete');
+		sound = new ScratchSoundPlayerStandalone(loader.data as ByteArray);
+		externalInterfaceCall('SoundPlayer.onLoadComplete');
 	}
 
 	private function playSound():void {
-		if(!sound) return;
-		(sound as ScratchSoundPlayer).startPlaying(soundDone);
+		(sound as ScratchSoundPlayerStandalone).startPlaying(soundDone);
 	}
 
 	private function stopSound():void {
-		if(!sound) return;
-		(sound as ScratchSoundPlayer).stopPlaying();
+		(sound as ScratchSoundPlayerStandalone).stopPlaying();
 	}
 
-	private function soundDone():void {
-		ExternalInterface.call('SoundPlayer.onPlayComplete');
+	private function soundDone(e:Event):void {
+		externalInterfaceCall('SoundPlayer.onPlayComplete');
+	}
+
+	private function externalInterfaceCall(...args):void {
+		if(ExternalInterface.available) {
+			ExternalInterface.call.apply(this,args);
+		}
 	}
 }
 }

@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="scratchr2-wavplayer">
     <configurations>
-      <configuration name="scratchr2-wavplayer" pure-as="true" main-class="WavPlayer" output-file="WavPlayer.swf" output-folder="$MODULE_DIR$/bin-release">
+      <configuration name="scratchr2-wavplayer" pure-as="true" main-class="WavPlayer" output-file="WavPlayer.swf" output-folder="$MODULE_DIR$/bin-release" use-html-wrapper="true" wrapper-template-path="$MODULE_DIR$/html-template">
         <dependencies target-player="14.0">
           <entries>
             <entry library-id="fafea8a8-aa24-4b7e-b946-a52448399632">
