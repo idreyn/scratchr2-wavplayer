@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="scratchr2-wavplayer">
+    <configurations>
+      <configuration name="scratchr2-wavplayer" pure-as="true" main-class="WavPlayer" output-file="WavPlayer.swf" output-folder="$MODULE_DIR$/bin-release">
+        <dependencies target-player="14.0">
+          <entries>
+            <entry library-id="fafea8a8-aa24-4b7e-b946-a52448399632">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="flex_sdk_4.11" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android />
+        <packaging-ios />
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/scratch-flash/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="flex_sdk_4.11" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="fafea8a8-aa24-4b7e-b946-a52448399632" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/scratch-flash/libs/blooddy_crypto.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
