@@ -1,0 +1,3 @@
+[submodule "scratch-flash"]
+	path = scratch-flash
+	url = https://github.com/llk/scratch-flash
