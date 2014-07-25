@@ -39,7 +39,7 @@ public class ScratchSoundPlayerStandalone {
 
 	// sound data, step size, and current stream position
 	protected var soundData:ByteArray;
-	protected var startOffset:int;
+	public var startOffset:int;
 	protected var endOffset:int;
 	protected var stepSize:Number;
 	private var adpcmBlockSize:int;
@@ -90,7 +90,6 @@ public class ScratchSoundPlayerStandalone {
 		activeSounds.push(this);
 		bytePosition = startOffset;
 		nextSample = getSample();
-
 		var flashSnd:Sound = new Sound();
 		flashSnd.addEventListener(SampleDataEvent.SAMPLE_DATA, writeSampleData);
 		soundChannel = flashSnd.play();
